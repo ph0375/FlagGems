@@ -845,6 +845,7 @@ _FULL_CONFIG = (
     ("matrix_exp_backward", matrix_exp_backward),
     ("max", max),
     ("max.dim", max_dim),
+    ("max_pool1d", max_pool1d),
     ("max_pool2d_backward", max_pool2d_backward),
     ("max_pool2d_with_indices", max_pool2d_with_indices),
     ("max_pool2d_with_indices_backward", max_pool2d_with_indices_backward),
