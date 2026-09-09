@@ -1149,6 +1149,7 @@ _FULL_CONFIG = (
     ("special_sinc", special_sinc),
     ("special_softmax", special_softmax),
     ("special_xlog1py", special_xlog1py),
+    ("special_xlogy", special_xlogy),
     ("split_with_sizes_copy", split_with_sizes_copy),
     ("sqrt", sqrt),
     ("sqrt_", sqrt_),
