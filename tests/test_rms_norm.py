@@ -27,7 +27,6 @@ from flag_gems.ops.rms_norm import (
     rms_norm_grad_dw_kernel,
     rms_norm_grad_dw_kernel_tle,
 )
-from flag_gems.ops.rms_norm_w8a16_fp8 import rms_norm_w8a16_fp8
 from flag_gems.utils.triton_version_utils import HAS_TLE
 
 from . import accuracy_utils as utils
