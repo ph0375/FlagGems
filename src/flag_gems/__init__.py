@@ -142,6 +142,10 @@ _FULL_CONFIG = (
         "_fake_quantize_learnable_per_tensor_affine",
         _fake_quantize_learnable_per_tensor_affine,
     ),
+    (
+        "_fake_quantize_learnable_per_tensor_affine_backward",
+        _fake_quantize_learnable_per_tensor_affine_backward,
+    ),
     ("_fill_mem_eff_dropout_mask_", _fill_mem_eff_dropout_mask_),
     ("_flash_attention_backward", flash_attention_backward),
     ("_flash_attention_forward", _flash_attention_forward),
