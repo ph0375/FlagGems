@@ -206,6 +206,7 @@ _FULL_CONFIG = (
     ("_nested_tensor_from_mask_left_aligned", _nested_tensor_from_mask_left_aligned),
     ("_nested_view_from_buffer_copy", _nested_view_from_buffer_copy),
     ("_nested_view_from_jagged", _nested_view_from_jagged),
+    ("_nested_view_from_jagged_copy", _nested_view_from_jagged_copy),
     ("_pdist_backward", _pdist_backward),
     ("_pdist_forward", _pdist_forward),
     ("_prelu_kernel", _prelu_kernel),
