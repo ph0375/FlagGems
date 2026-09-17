@@ -109,7 +109,7 @@ def rms_norm_loop_kernel(
     else:
         cdtype = in_ptr.dtype.element_ty
 
-    pid = ext.program_id(0)
+    pid = tl.program_id(0).to(tl.int64)
 
     acc = tl.zeros((TILE_N,), dtype=tl.float32)
     num_steps = tl.cdiv(N, TILE_N)
@@ -176,7 +176,7 @@ def rms_norm_grad_dx_loop_kernel(
     eps,  # epsilon to avoid division by zero
     BLOCK_SIZE: tl.constexpr,
 ):
-    pid = ext.program_id(0)
+    pid = tl.program_id(0).to(tl.int64)
     DX += pid * dx_stride_r
     X += pid * x_stride_r
     DY += pid * x_stride_r
@@ -228,7 +228,7 @@ def rms_norm_grad_dx_kernel(
     eps,  # epsilon to avoid division by zero
     BLOCK_SIZE: tl.constexpr,
 ):
-    pid = ext.program_id(0)
+    pid = tl.program_id(0).to(tl.int64)
     DX += pid * dx_stride_r
     X += pid * x_stride_r
     DY += pid * x_stride_r
