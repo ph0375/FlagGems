@@ -39,6 +39,49 @@ if cfg.QUICK_MODE:
 else:
     FLOAT_DTYPES = utils.FLOAT_DTYPES
 
+FP8_DTYPE = getattr(torch, "float8_e4m3fn", None)
+GROUP_SIZE = 128
+
+
+def _cuda_fp8_e4m3fn_available():
+    if FP8_DTYPE is None or not torch.cuda.is_available():
+        return False
+    # PPU can store and cast e4m3fn even though it reports sm_80.
+    if flag_gems.vendor_name == "thead":
+        return True
+    major, _ = torch.cuda.get_device_capability()
+    return major >= 9
+
+
+def _quantize_int8_weight(weight, group_size=GROUP_SIZE):
+    grouped_weight = weight.float().reshape(-1, group_size)
+    scale = (grouped_weight.abs().amax(dim=-1, keepdim=True) / 127).clamp(min=1e-8)
+    weight_q = (
+        (grouped_weight / scale)
+        .round()
+        .clamp(-128, 127)
+        .to(torch.int8)
+        .reshape_as(weight)
+        .contiguous()
+    )
+    return weight_q, scale.squeeze(-1).to(weight.dtype).contiguous()
+
+
+def _quantize_fp8_weight(weight, group_size=GROUP_SIZE):
+    fp8_info = torch.finfo(FP8_DTYPE)
+    grouped_weight = weight.float().reshape(-1, group_size)
+    scale = (grouped_weight.abs().amax(dim=-1, keepdim=True) / fp8_info.max).clamp(
+        min=1e-8
+    )
+    weight_fp8 = (
+        (grouped_weight / scale)
+        .clamp(fp8_info.min, fp8_info.max)
+        .to(FP8_DTYPE)
+        .reshape_as(weight)
+        .contiguous()
+    )
+    return weight_fp8, scale.squeeze(-1).to(weight.dtype).contiguous()
+
 
 # ---------------------------------------------------------------------------
 # Standard accuracy test: flag_gems.rms_norm vs a plain PyTorch reference,
