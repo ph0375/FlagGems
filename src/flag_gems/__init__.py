@@ -1194,6 +1194,18 @@ _FULL_CONFIG = (
         (QUANTIZED_CUDA_DISPATCH_KEY,),
     ),
     (
+        "quantized_max_pool2d",
+        quantized_max_pool2d,
+        None,
+        (QUANTIZED_CUDA_DISPATCH_KEY,),
+    ),
+    (
+        "quantized_max_pool2d.out",
+        quantized_max_pool2d_out,
+        None,
+        (QUANTIZED_CUDA_DISPATCH_KEY,),
+    ),
+    (
         "quantized_max_pool3d",
         quantized_max_pool3d,
         None,
