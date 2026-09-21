@@ -1726,6 +1726,18 @@ ops:
   - NeuralNetwork
   stages:
   - alpha: '5.5'
+- id: batch_norm_gather_stats
+  description: Triton kernel implementation for gathering per-device batch normalization
+    statistics into global mean and inverse standard deviation.
+  for:
+  - batch_norm_gather_stats
+  labels:
+  - aten
+  - KernelGen
+  kind:
+  - NeuralNetwork
+  stages:
+  - alpha: '5.5'
 - id: batch_norm_gather_stats_with_counts
   description: |
     Triton kernel implementation for gathering per-device batch normalization statistics with per-segment counts into global mean and inverse standard deviation.
