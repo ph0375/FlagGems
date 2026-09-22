@@ -152,6 +152,9 @@ from flag_gems.ops._sample_dirichlet import _sample_dirichlet
 from flag_gems.ops._scaled_dot_product_attention_math import (
     _scaled_dot_product_attention_math,
 )
+from flag_gems.ops._scaled_dot_product_attention_math_for_mps import (
+    _scaled_dot_product_attention_math_for_mps,
+)
 from flag_gems.ops._scaled_dot_product_cudnn_attention import (
     _scaled_dot_product_cudnn_attention,
 )
@@ -1359,6 +1362,7 @@ __all__ = [
     "_safe_softmax",
     "_sample_dirichlet",
     "_scaled_dot_product_attention_math",
+    "_scaled_dot_product_attention_math_for_mps",
     "_scaled_dot_product_cudnn_attention",
     "_scaled_dot_product_efficient_attention",
     "_scaled_dot_product_flash_attention",
