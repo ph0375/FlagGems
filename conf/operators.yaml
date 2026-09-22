@@ -16865,6 +16865,17 @@ ops:
   - BLAS
   stages:
   - alpha: '5.5'
+- id: transform_bias_rescale_qkv
+  description: Triton kernel implementation for _transform_bias_rescale_qkv.
+  for:
+  - _transform_bias_rescale_qkv
+  labels:
+  - aten
+  - KernelGen
+  kind:
+  - NeuralNetwork
+  stages:
+  - alpha: '5.5'
 - id: transpose
   description: 'Returns a view of the original tensor with its two dimensions swapped.
 
