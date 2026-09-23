@@ -27,6 +27,32 @@ ops:
   - NeuralNetwork
   stages:
   - alpha: '5.1'
+- id: _aminmax
+  description: 'Computes the minimum and maximum values of the `input` tensor.
+
+    '
+  for:
+  - _aminmax
+  labels:
+  - aten
+  - KernelGen
+  kind:
+  - Reduction
+  stages:
+  - alpha: '5.5'
+- id: _aminmax_out
+  description: 'A variant of _aminmax() that writes the result into the out tensor.
+
+    '
+  for:
+  - _aminmax.out
+  labels:
+  - aten
+  - KernelGen
+  kind:
+  - Reduction
+  stages:
+  - alpha: '5.5'
 - id: _ctc_loss
   description: 'Computes the CTC loss and the alpha lattice used by its backward pass.
 
