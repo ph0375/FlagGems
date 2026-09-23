@@ -414,7 +414,7 @@ from flag_gems.ops.cudnn_rnn import cudnn_rnn
 from flag_gems.ops.cudnn_rnn_backward import cudnn_rnn_backward
 from flag_gems.ops.cummax import cummax, cummaxmin_backward
 from flag_gems.ops.cummin import cummin
-from flag_gems.ops.cumprod import cumprod, cumprod_
+from flag_gems.ops.cumprod import cumprod, cumprod_, cumprod_backward
 from flag_gems.ops.cumsum import cumsum, cumsum_out, normed_cumsum
 from flag_gems.ops.cumsum_ import cumsum_
 from flag_gems.ops.cumulative_trapezoid import cumulative_trapezoid
@@ -1636,6 +1636,7 @@ __all__ = [
     "cummin",
     "cumprod",
     "cumprod_",
+    "cumprod_backward",
     "cumsum",
     "cumsum_",
     "cumsum_out",
